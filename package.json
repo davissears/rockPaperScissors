@@ -1,0 +1,16 @@
+{
+  "name": "rockpaperscissors",
+  "version": "1.0.0",
+  "description": "Project: Rock Paper Scissors Foundations Course Introduction For this project, you will create the game Rock Paper Scissors. This game will be played entirely in the console.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "jest": "^30.0.5"
+  }
+}
