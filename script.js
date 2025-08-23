@@ -20,3 +20,7 @@ function getHumanChoice(userChoice) {
   return userChoice;
 }
 console.log(getHumanChoice(userChoice));
+
+//*score variables
+let humanScore = 0;
+let computerScore = 0;
