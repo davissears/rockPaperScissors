@@ -2,55 +2,85 @@
 let computerChoice = Math.random();
 function getComputerChoice(computerChoice) {
   if (computerChoice <= 0.333) {
-    return "rock";
+    computerChoice = "rock";
   } else if (computerChoice <= 0.666) {
-    return "paper";
+    computerChoice = "paper";
   } else {
-    return "scissors";
+    computerChoice = "scissors";
   }
+  return computerChoice;
 }
-console.log(getComputerChoice(computerChoice));
+console.log(getComputerChoice(computerChoice), computerChoice);
 
-//*userChoice logic
-let userChoice = prompt("rock || paper || scissors");
-function getHumanChoice(userChoice) {
-  if (userChoice === "rock" || "paper" || "scissors") return userChoice;
+//*humanChoice logic
+let humanChoice = prompt("rock || paper || scissors");
+function getHumanChoice(humanChoice) {
+  if (humanChoice === "rock" || "paper" || "scissors") return humanChoice;
 }
-console.log(getHumanChoice(userChoice));
 
 //*score variables
 var computer = "computer";
 var human = "human";
+var tie = "tie";
 let humanScore = 0;
 let computerScore = 0;
 var currentWinner;
 let roundWinner = Math.max(humanScore, computerScore);
+
 //* single round logic
 function playRound(humanChoice, computerChoice) {
+  getComputerChoice(computerChoice);
+  getHumanChoice(humanChoice);
+  //* outcome logic
+
+  //* humanChoice = rock
   if ((humanChoice = "rock") && (computerChoice = "paper")) {
     currentWinner = computer;
-    return currentWinner;
   } else if ((humanChoice = "rock") && (computerChoice = "scissors")) {
     currentWinner = human;
-    return currentWinner;
   }
-  console.log(currentWinner);
+  //*humanChoice = paper
+  else if ((humanChoice = "paper") && (computerChoice = "scissors")) {
+    currentWinner = computer;
+  } else if ((humanChoice = "paper") && (computerChoice = "rock")) {
+    currentWinner = human;
+  }
+  //*humanChoice = scissors
+  else if ((humanChoice = "scissors") && (computerChoice = "rock")) {
+    currentWinner = computer;
+  } else if ((humanChoice = "scissors") && (computerChoice = "paper")) {
+    currentWinner = human;
+  }
+  //*tie
+  else humanChoice = computerChoice;
+  {
+    currentWinner = tie;
+  }
+
+  //* winner logic
   if ((currentWinner = human)) {
     ++humanScore;
   } else if ((currentWinner = computer)) {
     ++computerScore;
-  }
+  } else currentWinner = tie;
+
   {
-    return currentWinner;
+    return currentWinner, computerScore, humanScore;
   }
 }
-console.log(currentWinner, roundWinner);
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
-{
-}
-console.log(currentWinner, roundWinner);
 
+//* game logic
+playGame();
 
+console.log(
+  currentWinner,
+  roundWinner,
+  computerScore,
+  computerChoice,
+  humanScore,
+  humanChoice
+);
