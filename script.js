@@ -1,41 +1,35 @@
-//* computerChoice logic
-let computerChoice = Math.random();
+let computerChoice = getComputerChoice();
 function getComputerChoice(computerChoice) {
-  if (computerChoice <= 0.333) {
+  const computerChoiceValue = Math.random();
+  if (computerChoiceValue <= 0.333) {
     computerChoice = "rock";
-  } else if (computerChoice <= 0.666) {
+  } else if (computerChoiceValue <= 0.666) {
     computerChoice = "paper";
-  } else {
+  } else if (computerChoiceValue > 0.666) {
     computerChoice = "scissors";
   }
   return computerChoice;
 }
 
-//*humanChoice logic
-let humanChoice = prompt("rock || paper || scissors");
+let humanChoice = getHumanChoice();
 function getHumanChoice() {
-  if (
-    humanChoice === "rock" ||
-    humanChoice === "paper" ||
-    humanChoice === "scissors"
-  )
-    return humanChoice;
+  //* toggle one of the two following lines to switch between browser and debugger testing
+  //let input = window.prompt("rock || paper || scissors");
+  input = "rock";
+  if (input === "rock" || input === "paper" || input === "scissors")
+    return input;
 }
+console.log(humanChoice);
+console.log(computerChoice);
 
-//*score variables
-var computer = "computer";
-var human = "human";
-var tie = "tie";
 let humanScore = 0;
 let computerScore = 0;
-var currentWinner;
-var winner;
-
 //* single round logic
 function playRound(humanChoice, computerChoice) {
-  getComputerChoice(computerChoice);
-  getHumanChoice(humanChoice);
-  //* outcome logic
+  let computer = "computer";
+  let human = "human";
+  let tie = "tie";
+  let currentWinner;
 
   //* humanChoice = rock
   if (humanChoice === "rock" && computerChoice === "paper") {
@@ -65,18 +59,11 @@ function playRound(humanChoice, computerChoice) {
     ++humanScore;
   } else if (currentWinner === computer) {
     ++computerScore;
-  } else currentWinner === tie;
+  }
   return currentWinner;
 }
+console.log(playRound());
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
-/*  if (humanScore > computerScore) {
-    winner = human;
-  } else if (humanScore < computerScore) {
-    winner = computer;
-  } else winner = tie;
-  return winner; */
-
-//* game logic
