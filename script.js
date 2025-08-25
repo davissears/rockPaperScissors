@@ -10,12 +10,16 @@ function getComputerChoice(computerChoice) {
   }
   return computerChoice;
 }
-console.log(getComputerChoice(computerChoice), computerChoice);
 
 //*humanChoice logic
 let humanChoice = prompt("rock || paper || scissors");
-function getHumanChoice(humanChoice) {
-  if (humanChoice === "rock" || "paper" || "scissors") return humanChoice;
+function getHumanChoice() {
+  if (
+    humanChoice === "rock" ||
+    humanChoice === "paper" ||
+    humanChoice === "scissors"
+  )
+    return humanChoice;
 }
 
 //*score variables
@@ -25,7 +29,7 @@ var tie = "tie";
 let humanScore = 0;
 let computerScore = 0;
 var currentWinner;
-let roundWinner = Math.max(humanScore, computerScore);
+var winner;
 
 //* single round logic
 function playRound(humanChoice, computerChoice) {
@@ -34,53 +38,45 @@ function playRound(humanChoice, computerChoice) {
   //* outcome logic
 
   //* humanChoice = rock
-  if ((humanChoice = "rock") && (computerChoice = "paper")) {
+  if (humanChoice === "rock" && computerChoice === "paper") {
     currentWinner = computer;
-  } else if ((humanChoice = "rock") && (computerChoice = "scissors")) {
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
     currentWinner = human;
   }
   //*humanChoice = paper
-  else if ((humanChoice = "paper") && (computerChoice = "scissors")) {
+  else if (humanChoice === "paper" && computerChoice === "scissors") {
     currentWinner = computer;
-  } else if ((humanChoice = "paper") && (computerChoice = "rock")) {
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
     currentWinner = human;
   }
   //*humanChoice = scissors
-  else if ((humanChoice = "scissors") && (computerChoice = "rock")) {
+  else if (humanChoice === "scissors" && computerChoice === "rock") {
     currentWinner = computer;
-  } else if ((humanChoice = "scissors") && (computerChoice = "paper")) {
+  } else if (humanChoice === "scissors" && computerChoice === "paper") {
     currentWinner = human;
   }
   //*tie
-  else humanChoice = computerChoice;
-  {
+  else if (humanChoice === computerChoice) {
     currentWinner = tie;
   }
 
   //* winner logic
-  if ((currentWinner = human)) {
+  if (currentWinner === human) {
     ++humanScore;
-  } else if ((currentWinner = computer)) {
+  } else if (currentWinner === computer) {
     ++computerScore;
-  } else currentWinner = tie;
-
-  {
-    return currentWinner, computerScore, humanScore;
-  }
+  } else currentWinner === tie;
+  return currentWinner;
 }
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
+/*  if (humanScore > computerScore) {
+    winner = human;
+  } else if (humanScore < computerScore) {
+    winner = computer;
+  } else winner = tie;
+  return winner; */
 
 //* game logic
-playGame();
-
-console.log(
-  currentWinner,
-  roundWinner,
-  computerScore,
-  computerChoice,
-  humanScore,
-  humanChoice
-);
