@@ -10,7 +10,27 @@ function getComputerChoice(computerChoice) {
   return computerChoice;
 }
 
-function getHumanChoice() {
+function getHumanChoice(humanChoice) {
+  console.log(humanChoice);
+  if (
+    humanChoice === "rock" ||
+    humanChoice === "paper" ||
+    humanChoice === "scissors"
+  )
+    return humanChoice;
+}
+function playRound() {
+  const humanChoice = getHumanChoice(humanChoice);
+  const computerChoice = getComputerChoice();
+  let computer = "computer";
+  let human = "human";
+  let tie = "tie";
+  let currentWinner;
+  humanChoice;
+  computerChoice;
+}
+
+/*function getHumanChoice() {
   //* toggle one of the two following lines to switch between browser and debugger testing
   let userInput = window.prompt("rock || paper || scissors");
   //*userInput = "ROCK";
@@ -18,7 +38,9 @@ function getHumanChoice() {
   if (input === "rock" || input === "paper" || input === "scissors")
     return input;
 }
-console.log();
+
+
+
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
@@ -73,9 +95,15 @@ function playGame() {
   }
   console.log(computerScore, humanScore);
   return;
-}
-//Round Logic
 
-/*for (let i = 0; i < 5; i++) playRound();
-} */
-playGame();
+  //Round Logic
+
+  //for (let i = 0; i < 5; i++)
+  playRound();
+  {
+  }
+  playGame();
+}
+
+//exports
+*/
