@@ -1,3 +1,15 @@
+(function () {
+  const originalLog = console.log;
+  const outcome = document.getElementById("outcome");
+
+  console.log = function (message) {
+    addTextNode(message);
+    const lineBreak = document.createElement("br");
+    outcome.appendChild(lineBreak);
+    originalLog.apply(console, arguments);
+  };
+})();
+
 //function imports
 
 /* Create three buttons, one for each selection. Add an event 
@@ -21,9 +33,17 @@ btnChoices.forEach((button) => {
     const lineBreak = document.createElement("br"); //define lineBreak
     let humanChoice = this.className; //defines variable to pass to getHumanChoice
     addTextNode(`You Chose ${e.target.textContent} `); //adds content to .outcome div
+    const outcome = document.getElementById("outcome");
     outcome.appendChild(lineBreak); // adds linebreak to .outcome div
-    
-    playGame(humanChoice);
+    playRound(humanChoice); //call game logic function
   });
 });
+
+function updateScore(score) {
+  const update = document.getElementById("scoreDiv");
+  const scoreNode = update.firstChild;
+
+  scoreNode.nodeValue = score;
+  //update.removeChild(newScore);
+}
 // playGame() logs to #outcome
