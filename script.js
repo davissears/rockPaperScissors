@@ -21,7 +21,7 @@ function getComputerChoice(computerChoice) {
 
 let humanScore = 0;
 let computerScore = 0;
-
+let endGame = false;
 function playRound(humanChoice) {
   const userChoice = humanChoice;
   const computerChoice = getComputerChoice();
@@ -73,10 +73,20 @@ function playRound(humanChoice) {
   console.log("");
   let score = `ChatGPT: ${computerScore} Humanity: ${humanScore} `;
   updateScore(score);
-  return score;
+  return score, computerScore, humanScore;
 }
-//Round Logic
-
-/*for (let i = 0; i < 5; i++) {
-  playRound();
-}*/
+//end-game logic
+function declareWinner(computerScore, humanScore) {
+  if (computerScore === 5 || humanScore === 5) {
+    endGame = true;
+    let winner;
+    if (computerScore > humanScore) {
+      winner = "ChatGPT";
+    } else if (humanScore > computerScore) {
+      winner = "Humanity";
+    } else {
+      winner = "tie";
+    }
+    console.log(`${winner} wins!`);
+  } else return;
+}

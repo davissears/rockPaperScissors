@@ -40,6 +40,5 @@ function updateScore(score) {
   const scoreNode = update.firstChild;
 
   scoreNode.nodeValue = score;
-  //update.removeChild(newScore);
+  declareWinner(computerScore, humanScore);
 }
-// playGame() logs to #outcome
