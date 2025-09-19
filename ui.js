@@ -3,19 +3,13 @@
   const outcome = document.getElementById("outcome");
 
   console.log = function (message) {
-    addTextNode(message);
+    const outcome = document.getElementById("outcome");
     const lineBreak = document.createElement("br");
+    addTextNode(message);
     outcome.appendChild(lineBreak);
     originalLog.apply(console, arguments);
   };
 })();
-
-//function imports
-
-/* Create three buttons, one for each selection. Add an event 
-listener to the buttons that call your playRound function with 
-the correct playerSelection every time a button is clicked.
- (you can keep the console.logs for this step)*/
 
 const btnChoices = document.querySelectorAll("button"); // button selector
 
@@ -30,10 +24,12 @@ function addTextNode(text) {
 // react to user selection
 btnChoices.forEach((button) => {
   button.addEventListener("click", function (e) {
+    const outcome = document.getElementById("outcome");
+
+    outcome.innerHTML = "";
     const lineBreak = document.createElement("br"); //define lineBreak
     let humanChoice = this.className; //defines variable to pass to getHumanChoice
     addTextNode(`You Chose ${e.target.textContent} `); //adds content to .outcome div
-    const outcome = document.getElementById("outcome");
     outcome.appendChild(lineBreak); // adds linebreak to .outcome div
     playRound(humanChoice); //call game logic function
   });
