@@ -13,7 +13,6 @@
 
 const btnChoices = document.querySelectorAll("button"); // button selector
 
-//get text from buttons
 function addTextNode(text) {
   const outcomeText = document.createTextNode(text); //
   const outcome = document.getElementById("outcome");
@@ -23,14 +22,6 @@ function addTextNode(text) {
 
 // react to user selection
 btnChoices.forEach((button) => {
-  function gameEnd(endGame) {
-    if (endGame === true) {
-      const btnChoices = document.querySelectorAll("button"); // button selector
-      //remove buttons
-      console;
-      button.style.display = "none";
-    }
-  }
   button.addEventListener("click", function (e) {
     const outcome = document.getElementById("outcome");
 
@@ -52,10 +43,10 @@ function updateScore(score) {
 function gameEnd(endGame) {
   const btnChoices = document.querySelectorAll("button"); // button selector
   if (endGame === true) {
+    
     //remove buttons
-    console;
+
     btnChoices.forEach((button) => {
-      const lineBreak = document.createElement("br");
       button.style.display = "none";
     });
   }

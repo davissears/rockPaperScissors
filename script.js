@@ -71,15 +71,16 @@ function playRound(humanChoice) {
   }
   console.log("");
   let score = `ChatGPT: ${computerScore} Humanity: ${humanScore} `;
-  declareWinner(computerScore, humanScore, currentWinner);
   updateScore(score);
+  declareWinner(computerScore, humanScore, currentWinner);
   return score, computerScore, humanScore;
 }
 function declareWinner(computerScore, humanScore, currentWinner) {
   if (computerScore === 5 || humanScore === 5) {
+    const outcome = document.getElementById("outcome");
+    outcome.innerHTML = "";
     console.log(`${currentWinner} wins!`);
     endGame = true;
-    console.log("declareWinner", humanScore, computerScore);
     gameEnd(endGame);
   } else return;
 }
