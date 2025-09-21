@@ -69,24 +69,18 @@ function playRound(humanChoice) {
     ++computerScore;
     console.log(` You lose this round! `);
   }
-  console.log(`ChatGPT: ${computerScore} Humanity: ${humanScore} `);
   console.log("");
   let score = `ChatGPT: ${computerScore} Humanity: ${humanScore} `;
+  declareWinner(computerScore, humanScore, currentWinner);
   updateScore(score);
   return score, computerScore, humanScore;
 }
-//end-game logic
-function declareWinner(computerScore, humanScore) {
+function declareWinner(computerScore, humanScore, currentWinner) {
   if (computerScore === 5 || humanScore === 5) {
+    console.log(`${currentWinner} wins!`);
     endGame = true;
-    let winner;
-    if (computerScore > humanScore) {
-      winner = "ChatGPT";
-    } else if (humanScore > computerScore) {
-      winner = "Humanity";
-    } else {
-      winner = "tie";
-    }
-    console.log(`${winner} wins!`);
+    console.log("declareWinner", humanScore, computerScore);
+    gameEnd(endGame);
   } else return;
 }
+//end-game logic
